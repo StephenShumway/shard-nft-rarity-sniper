@@ -1,0 +1,40 @@
+# Rust
+/target
+/src-tauri/target
+
+# Node / frontend
+node_modules
+/ui/node_modules
+/ui/dist
+
+# Tauri generated (regenerate icons with `npx tauri icon assets/appicon.png`)
+/src-tauri/gen
+/src-tauri/icons
+
+# Secrets & runtime data (NEVER commit: wallet keys, API keys, logs).
+# The desktop app runs with its CWD at src-tauri/, so these stores are written
+# under src-tauri/ at runtime. Ignore both the repo-root and src-tauri/ copies.
+.env
+.env.*
+/logs
+/wallet
+/settings
+/task
+/rankings
+/src-tauri/logs
+/src-tauri/wallet
+/src-tauri/settings
+/src-tauri/task
+/src-tauri/rankings
+*.log
+*.tmp
+
+# Rankings output from the old test_scrape harness, if one is still lying around
+ranks.txt
+
+# Local tooling / editor / OS
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

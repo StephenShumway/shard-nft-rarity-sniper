@@ -1,0 +1,30 @@
+[package]
+name = "rarity-sniper-desktop"
+version = "0.1.0"
+edition = "2021"
+
+# Binary crate (src/main.rs). The produced exe is `rarity-sniper-desktop.exe`,
+# and the bundle/product name ("Shard") comes from tauri.conf.json. This is a member
+# of the workspace defined in ../Cargo.toml, so release/dev profiles are
+# inherited from the workspace root. Do NOT redeclare [profile.*] here.
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# The shared core: monitor hub, settings/wallet stores, task pipeline, etc.
+rarity-sniper = { path = ".." }
+
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+dashmap = "6"
+alloy = { version = "2", features = ["full"] }
+
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"

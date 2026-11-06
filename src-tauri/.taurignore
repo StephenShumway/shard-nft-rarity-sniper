@@ -1,0 +1,14 @@
+# Paths the Tauri dev file-watcher must ignore.
+#
+# During `tauri dev` the app's working directory is src-tauri/, so it writes its
+# runtime data here: config JSON, the wallet store, per-task files, logs, and
+# rankings. Without this list, every settings save / wallet add / balance
+# refresh / log line is seen by the watcher as a source change and triggers a
+# rebuild + window restart. Ignoring them means dev only restarts on real code
+# edits.
+settings/
+wallet/
+task/
+logs/
+rankings/
+*.tmp

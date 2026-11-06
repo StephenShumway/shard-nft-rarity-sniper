@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    /* Frameless window: keep the webview pinned, with no document-level scroll or
+       rubber-band overscroll past the app edges in either axis. */
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  body {
+    @apply bg-bg text-gray-100 font-sans antialiased;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  input,
+  textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-surface-2;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-border bg-surface;
+  }
+  .input {
+    @apply w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-gray-100 outline-none transition placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary/50;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-muted;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2 text-sm font-medium text-gray-200 transition hover:bg-border disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-danger/30 bg-danger/10 px-3.5 py-2 text-sm font-medium text-danger transition hover:bg-danger/20 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-icon {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-2 text-gray-200 transition hover:bg-border disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}

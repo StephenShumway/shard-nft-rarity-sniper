@@ -1,0 +1,42 @@
+[workspace]
+members = ["src-tauri"]
+resolver = "2"
+
+[package]
+name = "rarity-sniper"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rarity_sniper"
+path = "src/lib.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+futures = "0.3"
+alloy = { version = "2", features = ["full"] }
+axum = "0.8"
+hmac = "0.12"
+sha2 = "0.10"
+flate2 = "1"
+reqwest = { version = "0.13", features = ["json", "query", "rustls", "http2"], default-features = false }
+serde = { version = "1", features = ["derive"] }
+tokio-tungstenite = { version = "0.24", features = ["native-tls"] }
+serde_json = "1"
+tracing = "0.1"
+anyhow = "1"
+dashmap = "6"
+hex = "0.4"
+url = "2"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std", "serde"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev.package."*"]
+opt-level = 3
